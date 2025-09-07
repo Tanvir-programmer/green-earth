@@ -28,7 +28,7 @@ const displayPLants = (plants) => {
   plants.forEach((plant) => {
     const plantDiv = document.createElement("div");
     plantDiv.innerHTML = `
-      <div>
+      <div class="p-3 border border-gray-200 rounded-lg shadow-sm w-[230px] h-full">
         <img src="${plant.plant_image || plant.image}" alt="" />
         <h3 class="font-semibold text-xl mt-2">${
           plant.plant_name || plant.name
@@ -40,7 +40,7 @@ const displayPLants = (plants) => {
           </h5>
           <h5 class="font-medium">৳${plant.price || "N/A"}</h5>
         </div>
-        <button class="btn btn-primary bg-green-600 rounded-[50px] w-full mt-4">
+        <button id="p" class="btn btn-primary bg-green-600 rounded-[50px] w-full mt-4">
           Add to Cart
         </button>
       </div>
@@ -56,7 +56,7 @@ const displayCategories = (categories) => {
      <div>
           <div class="">
             <div
-              class="text-xl my-4 hover:bg-green-600 w-[250px] rounded-lg pl-3 p-2"
+              class="text-xl my-4 hover:bg-green-600 w-[20S0px] rounded-lg pl-3 p-2"
             >
               ${category.category_name}
             </div>

@@ -99,24 +99,29 @@
         Choose Your Trees
       </h2>
       <div
-        class="bg-[#f0fdf4] w-11/12 mx-auto flex justify-between gap-8 items-center"
+        class="bg-[#f0fdf4] w-11/12 mx-auto flex justify-between gap-4 items-start"
       >
-        <div class="category-section">
+        <div class="category-section w-[200px] p-4 rounded-lg shadow-md">
           <h2 class="font-semibold text-3xl py-4">Categories</h2>
           <div id="categories-container"></div>
         </div>
-        <div id="plant-container" class="grid grid-cols-3 gap-4 flex-1"></div>
+        <div
+          id="plant-container"
+          class="grid grid-cols-3 gap-4 place-items-stretch flex-1 w-full"
+        ></div>
 
         <div
-          class="font-semibold text-3xl py-4 bg-white h-full flex items-center px-4 rounded-lg"
+          class="font-semibold text-xl py-4 bg-white min-h-[1000px] px-4 rounded-lg w-[200px] shadow-md"
         >
           Your Cart
         </div>
       </div>
 
       <!-- campaign section starts here  -->
-      <section class="my-10 w-11/12 mx-auto">
-        <h2 class="my-5 text-3xl font-semibold">About the Campaign</h2>
+      <section class="mt-10 w-11/12 mx-auto py-10">
+        <h2 class="my-5 text-3xl font-semibold text-center">
+          About the Campaign
+        </h2>
         <div class="flex justify-between items-center gap-8">
           <div class="flex-1"><img src="./assets/about.png" alt="about" /></div>
           <div class="flex-1">
@@ -135,6 +140,24 @@
         </div>
       </section>
     </main>
+    <section class="bg-[#cff0dc] pt-10 pb-5">
+      <h2 class="font-semibold text-3xl text-center">Our Impact</h2>
+      <div class="flex justify-between items-center w-11/12 mx-auto mt-8">
+        <div class="bg-white p-8 rounded-lg text-center flex-1 mx-2">
+          <h2 class="text-green-600 text-2xl font-semibold">500K+</h2>
+          <p>Trees Planted</p>
+        </div>
+        <div class="bg-white p-8 rounded-lg text-center flex-1 mx-2">
+          <h2 class="text-green-600 text-2xl font-semibold">120+</h2>
+          <p>Communities Involved</p>
+        </div>
+        <div class="bg-white p-8 rounded-lg text-center flex-1 mx-2">
+          <h2 class="text-green-600 text-2xl font-semibold">30+</h2>
+          <p>Countries Reached</p>
+        </div>
+      </div>
+    </section>
+    <!-- footer section starts here  -->
     <script src="./script.js"></script>
   </body>
 </html>
