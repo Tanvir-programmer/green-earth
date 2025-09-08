@@ -5,15 +5,13 @@ const loadCategories = async () => {
     "https://openapi.programming-hero.com/api/categories"
   );
   const data = await res.json();
+  console.log(data);
   displayCategories(data.categories);
-  //   console.log(data.categories);
 };
 
 const loadPlants = async () => {
   const res = await fetch("https://openapi.programming-hero.com/api/plants");
   const data = await res.json();
-
-  console.log("API working:", data);
 
   if (data.plants && Array.isArray(data.plants)) {
     displayPLants(data.plants);
@@ -48,24 +46,50 @@ const displayPLants = (plants) => {
     plantsContainer.appendChild(plantDiv);
   });
 };
-
 const displayCategories = (categories) => {
   categories.forEach((category) => {
     const categoryDiv = document.createElement("div");
+    categoryDiv.className = "category-item";
+    categoryDiv.dataset.category = category.category_name;
     categoryDiv.innerHTML = `
-     <div>
-          <div class="">
-            <div
-              class="text-xl my-4 hover:bg-green-600 w-[20S0px] rounded-lg pl-3 p-2"
-            >
-              ${category.category_name}
-            </div>
-          </div>
-        </div>
+      <div onclick="loadByCategory('${category.id}')"
+        class="text-xl my-4 hover:bg-green-600 w-[20S0px] rounded-lg pl-3 p-2 hover:text-white cursor-pointer"
+      >
+        ${category.category_name}
+      </div>
     `;
     categoriesContainer.appendChild(categoryDiv);
   });
 };
+
+const loadByCategory = (id) => {
+  const url = `https://openapi.programming-hero.com/api/category/${id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.plants && Array.isArray(data.plants)) {
+        displayPLants(data.plants);
+      } else {
+        console.error("Unexpected API format:", data);
+      }
+    });
+};
+
+categoriesContainer.addEventListener("click", (e) => {
+  const categoryItem = e.target.closest(".category-item");
+  if (!categoryItem) return;
+
+  const categoryDivs = categoriesContainer.querySelectorAll(".category-item");
+  categoryDivs.forEach((div) => {
+    if (div !== categoryItem) {
+      div.classList.remove("active");
+    }
+  });
+
+  categoryItem.classList.add("active");
+  const categoryName = categoryItem.dataset.category;
+  loadByCategory(encodeURIComponent(categoryName));
+});
 
 loadCategories();
 loadPlants();
